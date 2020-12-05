@@ -31,7 +31,9 @@ export const listProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
 
-    const { data } = await Axios.get('http://localhost:5000/api/v1/products');
+    const { data } = await Axios.get(
+      'https://raboy-eshop.herokuapp.com/api/v1/products'
+    );
 
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
     localStorage.setItem('productList', JSON.stringify(data));
@@ -50,7 +52,7 @@ export const listProductDetails = (product_id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
     const response = await Axios.get(
-      `http://localhost:5000/api/v1/products/${product_id}`
+      `https://raboy-eshop.herokuapp.com/api/v1/products/${product_id}`
     );
 
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: response.data });
@@ -78,7 +80,7 @@ export const deleteProduct = (product_id) => async (dispatch, getState) => {
     dispatch({ type: PRODUCT_DELETE_REQUEST });
 
     await Axios.delete(
-      `http://localhost:5000/api/v1/products/${product_id}`,
+      `https://raboy-eshop.herokuapp.com/api/v1/products/${product_id}`,
       config
     );
 
@@ -107,7 +109,7 @@ export const createProduct = () => async (dispatch, getState) => {
   try {
     dispatch({ type: PRODUCT_CREATE_REQUEST });
     const { data } = await Axios.post(
-      `http://localhost:5000/api/v1/products`,
+      `https://raboy-eshop.herokuapp.com/api/v1/products`,
       {},
       config
     );
@@ -136,7 +138,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     dispatch({ type: PRODUCT_UPDATE_REQUEST });
 
     const { data } = await Axios.put(
-      `http://localhost:5000/api/v1/products/${product.product_id}`,
+      `https://raboy-eshop.herokuapp.com/api/v1/products/${product.product_id}`,
       product,
       config
     );
@@ -153,20 +155,19 @@ export const updateProduct = (product) => async (dispatch, getState) => {
 };
 
 export const fetchTopProducts = () => async (dispatch, getState) => {
-  const { token } = getState().userLogin.userInfo;
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-  };
+  // const { token } = getState().userLogin.userInfo;
+  // const config = {
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //     Authorization: `Bearer ${token}`,
+  //   },
+  // };
 
   try {
     dispatch({ type: PRODUCT_LIST_TOP_REQUEST });
 
     const { data } = await Axios.get(
-      'http://localhost:5000/api/v1/products/top',
-      config
+      'https://raboy-eshop.herokuapp.com/api/v1/products/top'
     );
 
     dispatch({ type: PRODUCT_LIST_TOP_SUCCESS, payload: data.products });

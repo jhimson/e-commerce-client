@@ -44,7 +44,7 @@ export const login = (username, password) => async (dispatch) => {
     dispatch({ type: USER_LOGIN_REQUEST });
 
     const { data } = await Axios.post(
-      'http://localhost:5000/api/v1/users/login',
+      'https://raboy-eshop.herokuapp.com/api/v1/users/login',
       { username, password },
       config
     );
@@ -91,7 +91,7 @@ export const register = (
     dispatch({ type: USER_REGISTER_REQUEST });
 
     const { data } = await Axios.post(
-      'http://localhost:5000/api/v1/users',
+      'https://raboy-eshop.herokuapp.com/api/v1/users',
       { user_id, email, firstname, lastname, username, password },
       config
     );
@@ -124,7 +124,7 @@ export const getUserDetails = (user_id) => async (dispatch, getState) => {
     dispatch({ type: USER_DETAILS_REQUEST });
 
     const { data } = await Axios.get(
-      `http://localhost:5000/api/v1/users/${user_id}`,
+      `https://raboy-eshop.herokuapp.com/api/v1/users/${user_id}`,
       config
     );
     dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
@@ -158,7 +158,7 @@ export const updateUserProfile = (
     dispatch({ type: USER_DETAILS_REQUEST });
 
     const { data } = await Axios.put(
-      `http://localhost:5000/api/v1/users/profile`,
+      `https://raboy-eshop.herokuapp.com/api/v1/users/profile`,
       { email, firstname, lastname, username, password },
       config
     );
@@ -188,7 +188,7 @@ export const listUsers = () => async (dispatch, getState) => {
     dispatch({ type: USER_LIST_REQUEST });
 
     const { data } = await Axios.get(
-      `http://localhost:5000/api/v1/users`,
+      `https://raboy-eshop.herokuapp.com/api/v1/users`,
       config
     );
 
@@ -218,7 +218,10 @@ export const deleteUser = (user_id) => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_DELETE_REQUEST });
 
-    await Axios.delete(`http://localhost:5000/api/v1/users/${user_id}`, config);
+    await Axios.delete(
+      `https://raboy-eshop.herokuapp.com/api/v1/users/${user_id}`,
+      config
+    );
 
     dispatch({ type: USER_DELETE_SUCCESS });
   } catch (error) {
@@ -245,7 +248,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
     dispatch({ type: USER_UPDATE_REQUEST });
 
     const { data } = await Axios.put(
-      `http://localhost:5000/api/v1/users/${user.user_id}`,
+      `https://raboy-eshop.herokuapp.com/api/v1/users/${user.user_id}`,
       user,
       config
     );
@@ -276,7 +279,7 @@ export const getUserToUpdate = (user_id) => async (dispatch, getState) => {
     dispatch({ type: USER_GET_REQUEST });
 
     const { data } = await Axios.get(
-      `http://localhost:5000/api/v1/users/${user_id}`,
+      `https://raboy-eshop.herokuapp.com/api/v1/users/${user_id}`,
       config
     );
     console.log(data);

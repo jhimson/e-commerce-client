@@ -44,7 +44,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
     };
 
     const { data } = await Axios.post(
-      `http://localhost:5000/api/v1/orders`,
+      `https://raboy-eshop.herokuapp.com/api/v1/orders`,
       order,
       config
     );
@@ -72,7 +72,7 @@ export const getOrdersByUserId = (user_id) => async (dispatch, getState) => {
       },
     };
     const { data } = await Axios.get(
-      `http://localhost:5000/api/v1/orders`,
+      `https://raboy-eshop.herokuapp.com/api/v1/orders`,
       config
     );
     dispatch({ type: ORDER_FETCH_SUCCESS, payload: data.rows });
@@ -99,7 +99,7 @@ export const getOrdersByOrderId = (order_id) => async (dispatch, getState) => {
       },
     };
     const { data } = await Axios.post(
-      `http://localhost:5000/api/v1/orders/orderDetails`,
+      `https://raboy-eshop.herokuapp.com/api/v1/orders/orderDetails`,
       { user_id, order_id },
       config
     );
@@ -153,7 +153,7 @@ export const payOrder = (order_id, paymentResult) => async (
     };
 
     const { data } = await Axios.put(
-      `http://localhost:5000/api/v1/orders/${order_id}/pay`,
+      `https://raboy-eshop.herokuapp.com/api/v1/orders/${order_id}/pay`,
       paymentResult,
       config
     );
@@ -182,7 +182,7 @@ export const fetchDistinctOrderId = () => async (dispatch, getState) => {
     dispatch({ type: ORDER_FETCH_DISTINCT_REQUEST });
 
     const { data } = await Axios.get(
-      `http://localhost:5000/api/v1/orders/distinct`,
+      `https://raboy-eshop.herokuapp.com/api/v1/orders/distinct`,
       config
     );
     dispatch({ type: ORDER_FETCH_DISTINCT_SUCCESS, payload: data.rows });
@@ -209,7 +209,7 @@ export const fetchOneOrder = (order_id) => async (dispatch, getState) => {
     dispatch({ type: ORDER_FETCH_ONE_REQUEST });
 
     const { data } = await Axios.get(
-      `http://localhost:5000/api/v1/orders/${order_id}/orderDetails`,
+      `https://raboy-eshop.herokuapp.com/api/v1/orders/${order_id}/orderDetails`,
       config
     );
     let allOrderList = localStorage.getItem('allOrderList')
@@ -265,7 +265,7 @@ export const getAllOrderedItemsByOrderId = (order_id) => async (
     };
 
     const { data } = await Axios.get(
-      `http://localhost:5000/api/v1/orders/${order_id}/all`,
+      `https://raboy-eshop.herokuapp.com/api/v1/orders/${order_id}/all`,
       config
     );
     dispatch({ type: ORDER_ITEMS_FETCH_SUCCESS, payload: data.orders });
@@ -294,7 +294,7 @@ export const deliverOrder = (order_id) => async (dispatch, getState) => {
     dispatch({ type: ORDER_DELIVER_REQUEST });
 
     await Axios.put(
-      `http://localhost:5000/api/v1/orders/${order_id}/deliver`,
+      `https://raboy-eshop.herokuapp.com/api/v1/orders/${order_id}/deliver`,
       {},
       config
     );

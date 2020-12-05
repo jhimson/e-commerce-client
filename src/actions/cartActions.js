@@ -12,7 +12,7 @@ const {
 export const addToCart = (id, qty) => async (dispatch, getState) => {
   try {
     const { data } = await Axios.get(
-      `http://localhost:5000/api/v1/products/${id}`
+      `https://raboy-eshop.herokuapp.com/api/v1/products/${id}`
     );
 
     dispatch({

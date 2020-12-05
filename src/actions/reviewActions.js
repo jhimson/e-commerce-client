@@ -18,7 +18,7 @@ export const fetchReviews = (product_id) => async (dispatch, getState) => {
     dispatch({ type: PRODUCT_FETCH_REVIEWS_REQUEST });
 
     const { data } = await Axios.get(
-      `http://localhost:5000/api/v1/reviews/${product_id}`
+      `https://raboy-eshop.herokuapp.com/api/v1/reviews/${product_id}`
     );
     dispatch({ type: PRODUCT_FETCH_REVIEWS_SUCCESS, payload: data.reviews });
   } catch (error) {
@@ -50,7 +50,7 @@ export const createReview = (ratingObj) => async (dispatch, getState) => {
     dispatch({ type: PRODUCT_CREATE_REVIEWS_REQUEST });
 
     await Axios.post(
-      `http://localhost:5000/api/v1/reviews/${product_id}`,
+      `https://raboy-eshop.herokuapp.com/api/v1/reviews/${product_id}`,
       {
         product_id,
         rating,
