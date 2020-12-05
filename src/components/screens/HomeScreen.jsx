@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import Product from '../Product';
 import {
@@ -93,11 +93,13 @@ const HomeScreen = () => {
           </Row>
           <Row>
             {numberOfPages > 1 ? (
-              <Paginator
-                productsPerPage={productsPerPage}
-                totalProducts={products.length}
-                paginate={paginate}
-              />
+              <Container>
+                <Paginator
+                  productsPerPage={productsPerPage}
+                  totalProducts={products.length}
+                  paginate={paginate}
+                />
+              </Container>
             ) : null}
           </Row>
         </>

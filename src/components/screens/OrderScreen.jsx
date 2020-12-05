@@ -69,7 +69,7 @@ const OrderScreen = () => {
     dispatch(resetProductDetails());
     const addPayPalScript = async () => {
       const { data: clientID } = await Axios.get(
-        'http://localhost:5000/api/v1/config/paypal'
+        'https://raboy-eshop.herokuapp.com/api/v1/config/paypal'
       );
       const script = document.createElement('script');
       script.type = 'text/javascript';
