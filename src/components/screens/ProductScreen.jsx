@@ -71,8 +71,8 @@ const ProductScreen = () => {
 
   return (
     <>
-      <Link>
-        <Button onClick={() => history.goBack()}>Go Back</Button>{' '}
+      <Link to="/">
+        <Button>Go Back</Button>{' '}
       </Link>
       {loading ? (
         <Loader />
